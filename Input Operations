@@ -1,0 +1,12 @@
+name = input("Enter your name: ")
+print(f"Hello, {name}! Welcome to Python input demo.\n")
+
+age = input("Enter your age: ")
+height = input("Enter your height in meters: ")
+weight = input("Enter your weight in kg: ")
+
+print("\n--- Personal Information ---")
+print(f"Name: {name}")
+print(f"Age: {age} years old")
+print(f"Height: {height} meters")
+print(f"Weight: {weight} kg")
