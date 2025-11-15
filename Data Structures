@@ -1,0 +1,113 @@
+print("=== PYTHON DATA STRUCTURES DEMO ===\n")
+
+print("1. TUPLE (Immutable):")
+student = ("John", 20, "Computer Science", 3.8)
+print(f"Student tuple: {student}")
+print(f"Name: {student[0]}, Age: {student[1]}")
+print(f"Length: {len(student)}")
+
+
+print("\n2. SET (Unique elements):")
+fruits = {"apple", "banana", "orange", "apple", "grape"}
+print(f"Fruits set: {fruits}")  # Duplicates removed automatically
+
+fruits.add("mango")
+fruits.remove("banana")
+print(f"After modifications: {fruits}")
+
+set_a = {1, 2, 3, 4}
+set_b = {3, 4, 5, 6}
+print(f"Union: {set_a | set_b}")
+print(f"Intersection: {set_a & set_b}")
+print(f"Difference: {set_a - set_b}")
+
+print("\n3. LINKED LIST:")
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+    
+    def display(self):
+        elements = []
+        current = self.head
+        while current:
+            elements.append(current.data)
+            current = current.next
+        return elements
+
+linked_list = LinkedList()
+linked_list.append(10)
+linked_list.append(20)
+linked_list.append(30)
+print(f"Linked List: {linked_list.display()}")
+
+print("\n4. STACK (LIFO):")
+stack = []
+stack.append("Task 1")
+stack.append("Task 2")
+stack.append("Task 3")
+print(f"Stack after pushes: {stack}")
+print(f"Popped: {stack.pop()}")
+print(f"Stack after pop: {stack}")
+print(f"Top element: {stack[-1]}")
+
+print("\n5. QUEUE (FIFO):")
+from collections import deque
+queue = deque()
+queue.append("Person 1")
+queue.append("Person 2")
+queue.append("Person 3")
+print(f"Queue after enqueues: {list(queue)}")
+print(f"Dequeued: {queue.popleft()}")
+print(f"Queue after dequeue: {list(queue)}")
+
+print("\n6. TREE (Hierarchical):")
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.children = []
+    
+    def add_child(self, child_node):
+        self.children.append(child_node)
+    
+    def display(self, level=0):
+        result = "  " * level + str(self.data) + "\n"
+        for child in self.children:
+            result += child.display(level + 1)
+        return result
+
+ceo = TreeNode("CEO")
+cto = TreeNode("CTO")
+cfo = TreeNode("CFO")
+ceo.add_child(cto)
+ceo.add_child(cfo)
+
+dev_manager = TreeNode("Development Manager")
+qa_manager = TreeNode("QA Manager")
+cto.add_child(dev_manager)
+cto.add_child(qa_manager)
+
+finance_manager = TreeNode("Finance Manager")
+cfo.add_child(finance_manager)
+
+dev1 = TreeNode("Developer 1")
+dev2 = TreeNode("Developer 2")
+dev_manager.add_child(dev1)
+dev_manager.add_child(dev2)
+
+print("Company Structure:")
+print(ceo.display())
