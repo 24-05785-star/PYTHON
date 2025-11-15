@@ -1,0 +1,31 @@
+print("=== DECISION FUNCTIONS DEMO ===\n")
+
+name = input("Enter your name: ")
+course = input("Enter your course: ")
+age = int(input("Enter your age: "))
+
+print(f"\nName: {name}")
+print(f"Course: {course}")
+print(f"Age: {age}\n")
+
+def grade_student(score):
+    if score >= 90:
+        return "A"
+    elif score >= 80:
+        return "B"
+    elif score >= 70:
+        return "C"
+    elif score >= 60:
+        return "D"
+    else:
+        return "F"
+
+scores = []
+print("Enter 5 scores:")
+for i in range(5):
+    score = int(input(f"Score {i+1}: "))
+    scores.append(score)
+
+print()
+for score in scores:
+    print(f"Score {score}: Grade {grade_student(score)}")
