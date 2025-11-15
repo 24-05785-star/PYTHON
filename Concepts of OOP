@@ -1,0 +1,133 @@
+class Animal:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def speak(self):
+        pass 
+    
+    def info(self):
+        return f"{self.name}, {self.age} years old"
+
+class Dog(Animal):
+    def __init__(self, name, age, breed):
+        super().__init__(name, age)
+        self.breed = breed
+    
+    def speak(self):
+        return "Woof!"
+    
+    def fetch(self):
+        return f"{self.name} is fetching the ball"
+
+class Cat(Animal): 
+    def speak(self):
+        return "Meow!"
+    
+    def climb(self):
+        return f"{self.name} is climbing"
+
+# Encapsulation with private attributes
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.__balance = balance 
+    
+    # Getter and Setter methods
+    def get_balance(self):
+        return self.__balance
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            return f"Deposited ${amount}"
+        return "Invalid amount"
+    
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+            return f"Withdrew ${amount}"
+        return "Insufficient funds"
+
+from abc import ABC, abstractmethod
+
+class Shape(ABC): 
+    @abstractmethod
+    def area(self):
+        pass
+    
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    
+    def area(self):  
+        return self.width * self.height
+    
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+print("=== COMPREHENSIVE OOP DEMO ===\n")
+
+dog = Dog("Buddy", 3, "Golden Retriever")
+cat = Cat("Whiskers", 2)
+
+animals = [dog, cat]
+for animal in animals:
+    print(f"{animal.info()} says: {animal.speak()}")
+
+account = BankAccount("John", 1000)
+print(f"\nBank Account for {account.owner}")
+print(account.deposit(500))
+print(account.withdraw(200))
+print(f"Balance: ${account.get_balance()}")
+
+rectangle = Rectangle(5, 3)
+print(f"\nRectangle Area: {rectangle.area()}")
+print(f"Rectangle Perimeter: {rectangle.perimeter()}")
+
+class MathOperations:
+    PI = 3.14159 
+    
+    def __init__(self, value):
+        self.value = value
+    
+    @classmethod
+    def circle_area(cls, radius):
+        return cls.PI * radius ** 2
+    
+    @staticmethod
+    def is_even(number):
+        return number % 2 == 0
+
+print(f"\nClass and Static Methods:")
+print(f"Circle area (radius=5): {MathOperations.circle_area(5):.2f}")
+print(f"Is 10 even? {MathOperations.is_even(10)}")
+
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+    
+    @property
+    def celsius(self):
+        return self._celsius
+    
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero!")
+        self._celsius = value
+    
+    @property
+    def fahrenheit(self):
+        return (self._celsius * 9/5) + 32
+
+temp = Temperature(25)
+print(f"\nProperty Decorators:")
+print(f"{temp.celsius}°C = {temp.fahrenheit}°F")
+temp.celsius = 30
+print(f"Updated: {temp.celsius}°C = {temp.fahrenheit}°F")
