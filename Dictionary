@@ -1,0 +1,31 @@
+print("=== DICTIONARY DEMO ===\n")
+
+student = {
+    "name": "John Doe",
+    "age": 20,
+    "course": "Computer Science",
+    "grades": {"math": 95, "science": 85, "english": 90}
+}
+
+courses = {
+    "CS101": "Introduction to Programming",
+    "MATH201": "Calculus I"
+}
+
+print("Student Information:")
+print(f"Name: {student['name']}")
+print(f"Age: {student['age']}")
+print(f"Course: {student['course']}")
+print(f"Math Grade: {student['grades']['math']}")
+
+print(f"\nAll keys: {list(student.keys())}")
+print(f"All values: {list(student.values())}")
+print(f"All items: {list(student.items())}")
+
+print("\nCourse Codes and Names:")
+for code, name in courses.items():
+    print(f"{code}: {name}")
+
+print("\nAll Grades:")
+for subject, grade in student["grades"].items():
+    print(f"{subject}: {grade}")
